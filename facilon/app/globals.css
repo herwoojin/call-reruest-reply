@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── 주간 모드 (백색) — 기본 :root 및 명시적 data-theme=day ── */
+  :root,
+  [data-theme="day"] {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 52%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 42%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 217 91% 52%;
+    --radius: 0.75rem;
+    --map-surface: 226 30% 92%;
+    --chart-1: 217 91% 52%;
+    --chart-2: 22 96% 46%;
+    --chart-3: 25 60% 40%;
+    --chart-4: 48 96% 45%;
+    --chart-5: 142 71% 38%;
+  }
+
+  /* ── 야간 모드 (검정) — 브랜드 배경 #0B1220 ── */
+  [data-theme="night"] {
+    --background: 220 49% 8%;
+    --foreground: 210 40% 96%;
+    --card: 221 43% 11%;
+    --card-foreground: 210 40% 96%;
+    --popover: 221 43% 11%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 35% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 220 35% 16%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 220 35% 18%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 217 91% 65%;
+    --map-surface: 220 49% 8%;
+    --chart-1: 217 91% 65%;
+    --chart-2: 27 96% 61%;
+    --chart-3: 25 70% 55%;
+    --chart-4: 48 96% 60%;
+    --chart-5: 142 71% 50%;
+  }
+
+  /* ── 종이질감 모드 (따뜻한 세피아) ── */
+  [data-theme="paper"] {
+    --background: 40 38% 92%;
+    --foreground: 30 25% 18%;
+    --card: 42 46% 96%;
+    --card-foreground: 30 25% 18%;
+    --popover: 42 46% 96%;
+    --popover-foreground: 30 25% 18%;
+    --primary: 20 65% 44%;
+    --primary-foreground: 42 46% 97%;
+    --secondary: 38 32% 85%;
+    --secondary-foreground: 30 25% 18%;
+    --muted: 38 30% 84%;
+    --muted-foreground: 30 18% 40%;
+    --accent: 36 34% 80%;
+    --accent-foreground: 30 25% 18%;
+    --destructive: 4 70% 46%;
+    --destructive-foreground: 42 46% 97%;
+    --border: 36 26% 76%;
+    --input: 36 26% 76%;
+    --ring: 20 65% 44%;
+    --radius: 0.75rem;
+    --map-surface: 40 30% 82%;
+    --chart-1: 20 65% 44%;
+    --chart-2: 150 40% 34%;
+    --chart-3: 210 45% 42%;
+    --chart-4: 42 80% 40%;
+    --chart-5: 280 30% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  /* 큰글자 모드: rem 기반 전 UI 확대 (기본 16px → 20px) */
+  html {
+    font-size: 16px;
+  }
+  html[data-font="large"] {
+    font-size: 20px;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100dvh;
+  }
+  /* 종이질감 모드: 미세한 종이 결 텍스처 오버레이 */
+  [data-theme="paper"] body {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        hsl(38 30% 88% / 0.4) 0px,
+        hsl(38 30% 88% / 0.4) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      radial-gradient(
+        hsl(30 25% 60% / 0.08) 1px,
+        transparent 1px
+      );
+    background-size: 100% 3px, 4px 4px;
+  }
+  /* 터치 타깃 48px+ 원칙 (04_PROMPT 핵심 규칙 6) */
+  button,
+  [role="button"] {
+    min-height: 3rem;
+  }
+}
+
+/* ── 지도 핀 (PRD F1-3): 카테고리색 원 + 상태 오버레이 ── */
+.fpin {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+.fpin-core {
+  position: absolute;
+  inset: 5px;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+/* 요청접수: 점선 링 */
+.fpin-dashed {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px dashed #93c5fd;
+}
+/* 진행율 링 (conic) — IN_PROGRESS */
+.fpin-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+}
+/* 상태 뱃지 (모래시계/체크) */
+.fpin-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 9px;
+  border-radius: 9999px;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+/* 작업중 펄스 */
+.fpin-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 2px solid #34d399;
+  animation: fpulse 1.6s ease-out infinite;
+}
+@keyframes fpulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+.leaflet-container {
+  background: hsl(var(--map-surface));
+  font: inherit;
+}
