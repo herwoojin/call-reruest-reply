@@ -1,6 +1,6 @@
 {
-  "name": "시설ON — 편의점 시설 AS 통합 관리",
-  "short_name": "시설ON",
+  "name": "GS25시설요청관리 — 편의점 시설 AS 통합 관리",
+  "short_name": "GS25시설",
   "display": "standalone",
   "start_url": "/",
   "background_color": "#0B1220",

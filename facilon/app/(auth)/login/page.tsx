@@ -62,7 +62,9 @@ function LoginInner() {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-6 p-6">
         <header className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tight">시설ON</h1>
+          <h1 className="brand-neon text-3xl font-bold tracking-tight">
+            GS25시설요청관리
+          </h1>
           <p className="text-sm text-muted-foreground">
             어떤 입장으로 로그인하시나요?
           </p>

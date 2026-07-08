@@ -34,7 +34,9 @@ export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-6 p-6">
       <header className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold tracking-tight">시설ON</h1>
+        <h1 className="brand-neon text-3xl font-bold tracking-tight">
+          GS25시설요청관리
+        </h1>
         <p className="text-sm text-muted-foreground">
           전국 편의점 시설 AS 통합 관리 — 디지털트윈 지도
         </p>

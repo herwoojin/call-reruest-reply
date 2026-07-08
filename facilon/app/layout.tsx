@@ -11,10 +11,10 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "시설ON — 편의점 시설 AS 통합 관리",
+  title: "GS25시설요청관리 — 편의점 시설 AS 통합 관리",
   description:
     "전국 편의점 시설물 AS를 디지털트윈 지도로 접수·배정·발주·작업·완료까지 실시간 관리",
-  applicationName: "시설ON",
+  applicationName: "GS25시설요청관리",
   manifest: "/manifest.json",
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className={`${geistSans.variable} font-sans antialiased`}>
+      <body className={`${geistSans.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

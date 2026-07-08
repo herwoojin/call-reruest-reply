@@ -79,9 +79,9 @@ export function AppShell({
           href="/"
           className="flex h-16 items-center justify-center gap-2 border-b lg:justify-start lg:px-6"
         >
-          <span className="text-xl font-bold tracking-tight">
-            <span className="lg:hidden">ON</span>
-            <span className="hidden lg:inline">시설ON</span>
+          <span className="brand-neon text-lg font-bold tracking-tight">
+            <span className="lg:hidden">GS25</span>
+            <span className="hidden lg:inline">GS25시설요청관리</span>
           </span>
         </Link>
 
@@ -151,8 +151,11 @@ export function AppShell({
       <div className="flex min-w-0 flex-1 flex-col">
         {/* 상단 헤더 (모바일은 브랜드+설정, 데스크톱은 컨텍스트) */}
         <header className="sticky top-0 z-40 flex items-center justify-between border-b bg-background/90 px-4 py-3 backdrop-blur">
-          <Link href="/" className="text-lg font-bold tracking-tight md:hidden">
-            시설ON
+          <Link
+            href="/"
+            className="brand-neon text-base font-bold tracking-tight md:hidden"
+          >
+            GS25시설요청관리
           </Link>
           <span className="hidden text-sm font-semibold md:inline">
             {title}

@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── 페이퍼로지(Paperlogy) 폰트 — 전역 적용 ── */
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2")
+    format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+
 @layer base {
   /* ── 주간 모드 (백색) — 기본 :root 및 명시적 data-theme=day ── */
   :root,
@@ -108,6 +145,40 @@
   body {
     @apply bg-background text-foreground antialiased;
     min-height: 100dvh;
+    font-family: "Paperlogy", ui-sans-serif, system-ui, "Apple SD Gothic Neo",
+      "Malgun Gothic", sans-serif;
+  }
+
+  /* ── 브랜드 네온 제목 — 배경 밝기에 따라 네온색 반전 ── */
+  .brand-neon {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    transition: text-shadow 0.3s ease;
+  }
+  /* 야간(어두운 배경): 밝은 네온 */
+  [data-theme="night"] .brand-neon {
+    color: #5eead4;
+    text-shadow:
+      0 0 4px rgba(94, 234, 212, 0.9),
+      0 0 11px rgba(45, 212, 191, 0.7),
+      0 0 22px rgba(56, 189, 248, 0.55),
+      0 0 42px rgba(56, 189, 248, 0.35);
+  }
+  /* 주간(밝은 배경): 어두운 네온 */
+  [data-theme="day"] .brand-neon {
+    color: #0b7a68;
+    text-shadow:
+      0 0 1px rgba(11, 122, 104, 0.6),
+      0 0 6px rgba(13, 148, 136, 0.4),
+      0 0 14px rgba(16, 185, 129, 0.25);
+  }
+  /* 종이질감(따뜻한 밝은 배경): 어두운 세피아 네온 */
+  [data-theme="paper"] .brand-neon {
+    color: #a83f19;
+    text-shadow:
+      0 0 1px rgba(168, 63, 25, 0.55),
+      0 0 7px rgba(180, 83, 40, 0.35),
+      0 0 15px rgba(154, 52, 18, 0.22);
   }
   /* 종이질감 모드: 미세한 종이 결 텍스처 오버레이 */
   [data-theme="paper"] body {
